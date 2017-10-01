@@ -2,6 +2,7 @@ group 'mpt.labs'
 version '1.0'
 
 apply plugin: 'java'
+apply plugin: 'jacoco'
 
 sourceCompatibility = 1.8
 
@@ -9,12 +10,10 @@ repositories {
     mavenCentral()
 }
 
-//sourceSets.main.java.srcDirs = ["src"]
 sourceSets.test.java.srcDirs = ["src/test"]
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
-   // compile group: 'junit', name: 'junit', version: '4.12'
 }
 
 jar {
@@ -24,3 +23,12 @@ jar {
         )
     }
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
+check.dependsOn jacocoTestReport
