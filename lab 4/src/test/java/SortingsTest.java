@@ -1,14 +1,15 @@
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.Random;
 
 public class SortingsTest {
-    private int[] originalArray,expectedArray,actualArray;
+    private int[] originalArray, expectedArray, actualArray;
 
     @Before
-    public void init(){
+    public void init() {
         originalArray = new int[50];
         Random random = new Random();
         for (int i = 0; i < originalArray.length; i++) {
@@ -16,12 +17,13 @@ public class SortingsTest {
         }
     }
 
-    void fillArrays(){
+    void fillArrays() {
         expectedArray = Arrays.copyOf(originalArray, 50);
-        actualArray =  Arrays.copyOf(originalArray, 50);
+        actualArray = Arrays.copyOf(originalArray, 50);
     }
+
     @Test
-    public void bubbleSortTest(){
+    public void bubbleSortTest() {
         BubbleSort bubbleSort = new BubbleSort();
         fillArrays();
         Arrays.sort(expectedArray);
@@ -31,7 +33,7 @@ public class SortingsTest {
     }
 
     @Test
-    public void shellSortTest(){
+    public void shellSortTest() {
         ShellSort shellSort = new ShellSort();
         fillArrays();
         Arrays.sort(expectedArray);
@@ -41,7 +43,7 @@ public class SortingsTest {
     }
 
     @Test
-    public void heapSortTest(){
+    public void heapSortTest() {
         HeapSort heapSort = new HeapSort();
         fillArrays();
         Arrays.sort(expectedArray);
@@ -51,8 +53,8 @@ public class SortingsTest {
     }
 
     @Test
-    public void insertionSortTest(){
-       InsertionSort insertionSort = new InsertionSort();
+    public void insertionSortTest() {
+        InsertionSort insertionSort = new InsertionSort();
         fillArrays();
         Arrays.sort(expectedArray);
         insertionSort.sort(actualArray);
@@ -61,17 +63,17 @@ public class SortingsTest {
     }
 
     @Test
-    public void quickSortTest(){
+    public void quickSortTest() {
         QuickSort quickSort = new QuickSort();
         fillArrays();
         Arrays.sort(expectedArray);
-        quickSort.Sort(actualArray, 0, actualArray.length-1);
+        quickSort.Sort(actualArray, 0, actualArray.length - 1);
 
         assertArrayEquals(expectedArray, actualArray);
     }
 
     @Test
-    public void cycleSortTest(){
+    public void cycleSortTest() {
         CycleSort cycleSort = new CycleSort();
         fillArrays();
         Arrays.sort(expectedArray);
@@ -81,7 +83,7 @@ public class SortingsTest {
     }
 
     @Test
-    public void arrayCopyTest(){
+    public void arrayCopyTest() {
         assertArrayEquals(originalArray, Lab4.arrayCopy(originalArray));
     }
 }
