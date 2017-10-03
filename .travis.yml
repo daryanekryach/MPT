@@ -8,6 +8,9 @@ jdk:
 - oraclejdk7
 - oraclejdk8
 
+before_install:
+  gradle -b wrapper.gradle wrapper
+
 before_script:
     - wget https://services.gradle.org/distributions/gradle-2.14-bin.zip
     - unzip gradle-2.14-bin.zip
