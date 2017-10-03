@@ -55,3 +55,7 @@ check.dependsOn jacocoTestReport
 task wrapper(type: Wrapper) {
     gradleVersion = '4.1'
 }
+
+check.doFirst {
+	println "Running gradle v${project.gradle.gradleVersion}"
+}
